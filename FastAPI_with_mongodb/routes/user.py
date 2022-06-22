@@ -10,6 +10,11 @@ user = APIRouter()
 
 
 @user.get("/")
+async def root():
+    return {"message": "Welcome to fastapi service of address manager"}
+
+
+@user.get("/")
 async def find_all_address():
     return usersEntity(connection.local.user.find())
 
