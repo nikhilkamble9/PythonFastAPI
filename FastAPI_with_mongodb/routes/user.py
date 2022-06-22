@@ -9,7 +9,7 @@ from bson import ObjectId
 user = APIRouter()
 
 
-@user.get("/")
+@user.get("/root")
 async def root():
     return {"message": "Welcome to fastapi service of address manager"}
 
