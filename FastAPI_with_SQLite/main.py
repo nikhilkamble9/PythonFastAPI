@@ -46,11 +46,11 @@ def create_new_address(req: Schema.Address, res: Response, db: Session = Depends
             address=address,
             city=city,
             state=state,
-            country=locationData,
+            country=locationData['adminArea1'],
             pincode=pincode,
-            latitude=locationData,
-            longitude=locationData,
-            maplink=locationData
+            latitude=locationData['displayLatLng']['lat'],
+            longitude=locationData['displayLatLng']['lng'],
+            maplink=locationData['mapUrl']
         )
 
         # adding row to tabel
@@ -109,11 +109,11 @@ def update_address_by_id(id, req: Schema.Address, res: Response, db: Session = D
             "address": address,
             "city": city,
             "state": state,
-            "country": locationData,
+            "country": locationData['adminArea1'],
             "pincode": pincode,
-            "longitude":  locationData,
-            "latitude":  locationData,
-            "maplink": locationData
+            "latitude":  locationData['displayLatLng']['lat'],
+            "longitude":  locationData['displayLatLng']['lng'],
+            "maplink": locationData['mapUrl']
         }
 
         # updating address through id and query params

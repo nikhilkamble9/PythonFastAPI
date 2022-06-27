@@ -16,4 +16,4 @@ def getlocation(address, city, state):
     mainlocationapi = f"{locationapi}{address},{city},{state}"
     req = requests.get(mainlocationapi)
     locationData = req.json()["results"][0]["locations"][0]
-    return
+    return locationData
