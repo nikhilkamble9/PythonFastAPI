@@ -13,6 +13,8 @@ app = FastAPI(
 
 Model.Base.metadata.create_all(engine)
 
+# connecting to database
+
 
 def getDb():
     db = SessionLocal()
@@ -26,9 +28,8 @@ def getDb():
 def root():
     return {"message": "Welcome to the address manager FastAPI service"}
 
-# creating address frombody
 
-
+# creating address from body_params
 @app.post("/createNewAddress", status_code=status.HTTP_201_CREATED)
 def create_new_address(req: Schema.Address, res: Response, db: Session = Depends(getDb)):
     try:
@@ -91,7 +92,7 @@ def get_addresses(res: Response, db: Session = Depends(getDb)):
         }
 
 
-# update the address through id and request body
+# update the address through id
 
 @app.put("/updateAddressByID/{id}", status_code=status.HTTP_202_ACCEPTED)
 def update_address_by_id(id, req: Schema.Address, res: Response, db: Session = Depends(getDb)):
